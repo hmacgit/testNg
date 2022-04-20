@@ -13,6 +13,8 @@ import {
 } from 'rxjs';
 import {HttpApiService} from '../../app/http-api.service';
 import produce from 'immer';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {ShortUrlComponent} from '../../app/short-url/short-url.component';
 
 export interface ShortCodeStateModel {
   url?: string,
@@ -30,7 +32,10 @@ export interface ShortCodeStateModel {
 @Injectable()
 export class ShortCodeState {
 
-  constructor(private _apiService: HttpApiService) {
+  durationInSeconds = 5;
+  constructor(
+    private _apiService: HttpApiService,
+    private _snackBar: MatSnackBar) {
   }
 
 
@@ -53,6 +58,7 @@ export class ShortCodeState {
       }),
       catchError(err => {
         console.log('shortcode error', err.toString());
+        this._snackBar.open(err.statusText, err.status);
         return of(err);
       })
     );
@@ -60,13 +66,13 @@ export class ShortCodeState {
 
   @Action(ListShortCodeAction)
   public list({ setState, patchState, dispatch }: StateContext<ShortCodeStateModel>, {}: ListShortCodeAction) {
-    //patchState(ShortCodeState.setInstanceState(payload));
     return this._apiService.listShortCode().pipe(
       tap(( data ) => {
         console.log(data);
       }),
       catchError(err => {
         console.log(err.statusText, err.status);
+        this._snackBar.open(err.statusText, err.status);
         return of(err);
       })
     );
@@ -74,14 +80,16 @@ export class ShortCodeState {
 
   @Action(GetShortCodeAction)
   public getShortCode({ setState, patchState, dispatch }: StateContext<ShortCodeStateModel>, {payload}: GetShortCodeAction) {
-    //patchState(ShortCodeState.setInstanceState(payload));
     return this._apiService.getShortCode(payload).pipe(
       tap(( data ) => {
         console.log(data);
       }),
       catchError(err => {
         console.log(err.statusText, err.status);
+
+        this._snackBar.open(err.statusText, err.status);
         return of(err);
+
       })
     );
   }
@@ -90,18 +98,17 @@ export class ShortCodeState {
 
   @Action(GetUrlAction)
   public getUrl({ setState, patchState, dispatch }: StateContext<ShortCodeStateModel>, {payload}: GetUrlAction) {
-    //patchState(ShortCodeState.setInstanceState(payload));
     return this._apiService.getUrl(payload).pipe(
       tap(( data ) => {
         console.log(data);
       }),
       catchError(err => {
         console.log(err.statusText, err.status);
+        this._snackBar.open(err.statusText, err.status);
         return of(err);
       })
     );
   }
-
 
 
 

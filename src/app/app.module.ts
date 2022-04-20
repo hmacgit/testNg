@@ -7,6 +7,10 @@ import { ShortUrlComponent } from './short-url/short-url.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from '@angular/common/http';
 import {NgxsStoreModule} from '../store/store.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,11 @@ import {NgxsStoreModule} from '../store/store.module';
         AppRoutingModule,
         ReactiveFormsModule,
         HttpClientModule,
-        NgxsStoreModule
+        NgxsStoreModule,
+        BrowserAnimationsModule,
+        NgbModule,
+        MatButtonModule,
+        MatSnackBarModule
     ],
   providers: [],
   bootstrap: [AppComponent]
