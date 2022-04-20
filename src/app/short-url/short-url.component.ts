@@ -29,6 +29,7 @@ export class ShortUrlComponent implements OnInit {
   controlConstant = shortURLConstant.controls;
 
   @Select(ShortCodeState.getItems) getItems$: any;
+  @Select(ShortCodeState.getUrl) getUrl$: any;
 
   ngOnInit(): void {
     this.fg = this.fs.getURL();

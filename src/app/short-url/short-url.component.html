@@ -1,7 +1,7 @@
 <form
   [formGroup]="fg">
   <div class="card m-2">
-    <h5 class="m-2">URL</h5>
+    <h5 class="m-2">Get URL</h5>
 
     <div class="formgrid grid m-2">
       <div class="field col">
@@ -48,10 +48,22 @@
       <mat-card-content>
         <li *ngFor="let item of getItems$ | async; index as i;">
           <a href="{{item.url}}" target="_blank">{{item.url}}</a>
+          {{item.shortCode}}
         </li>
       </mat-card-content>
     </div>
   </div>
+
+
+  <div class="card m-2">
+    <h5 class="m-2">URL</h5>
+    <div *ngIf="getUrl$ | async as url">
+      <mat-card-content>
+        <li>{{url}}</li>
+      </mat-card-content>
+    </div>
+  </div>
+
 
 
 </form>

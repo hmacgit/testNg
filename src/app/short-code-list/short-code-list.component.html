@@ -57,6 +57,7 @@
       <mat-card-content>
         <li *ngFor="let item of getItems$ | async; index as i;">
           <a href="{{item.url}}" target="_blank">{{item.url}}</a>
+          {{item.shortCode}}
         </li>
       </mat-card-content>
     </div>

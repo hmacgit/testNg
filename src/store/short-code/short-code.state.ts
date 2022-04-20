@@ -58,7 +58,7 @@ export class ShortCodeState {
   }
 
   @Selector()
-  public static getShortCode(state: ShortCodeStateModel) {
+  public static getShortCode(state: ShortCodeUrl) {
     return state.shortCode;
   }
 
@@ -114,13 +114,11 @@ export class ShortCodeState {
     return this._apiService.sendUrl(payload).pipe(
       tap(( data ) => {
         console.log(data);
-
         setState(
-          produce((draft: ShortCodeStateModel) => {
-            draft = data;
+          produce((draft: ShortCodeUrl) => {
+            draft.shortCode = data.shortCode;
           })
         );
-
       }),
       catchError(err => {
         console.log(err.statusText, err.status);
@@ -139,6 +137,11 @@ export class ShortCodeState {
     return this._apiService.sendShortCode(payload).pipe(
       tap(( data ) => {
         console.log(data);
+        setState(
+          produce((draft: ShortCodeUrl) => {
+            draft.url = data.url;
+          })
+        );
       }),
       catchError(err => {
         console.log(err.statusText, err.status);
