@@ -11,11 +11,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ShortCodeListComponent } from './short-code-list/short-code-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ShortUrlComponent
+    ShortUrlComponent,
+    ShortCodeListComponent
   ],
     imports: [
         BrowserModule,
