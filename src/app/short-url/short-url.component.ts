@@ -57,10 +57,10 @@ export class ShortUrlComponent implements OnInit {
   }
 
   getUrl() {
-    console.log(this.fg.value.url);
+    console.log(this.fg.value.shortCode);
 
     if(this.fg.valid) {
-      this._store.dispatch(new GetUrlAction(this.fg.value.url));
+      this._store.dispatch(new GetUrlAction(this.fg.value.shortCode));
     } else {
       this.fg.markAllAsTouched();
     }
