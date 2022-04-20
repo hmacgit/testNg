@@ -6,6 +6,7 @@ import {HttpApiService} from "../http-api.service";
 import {Store} from '@ngxs/store';
 import {
   GetShortCodeAction,
+  GetUrlAction,
   ListShortCodeAction,
   SetShortCodeAction
 } from '../../store/short-code/short-code.actions';
@@ -45,6 +46,11 @@ export class ShortUrlComponent implements OnInit {
   getShortCode() {
     console.log(this.fg.value.shortCode);
     this._store.dispatch(new GetShortCodeAction(this.fg.value.shortCode));
+  }
+
+  getUrl() {
+    console.log(this.fg.value.url);
+    this._store.dispatch(new GetUrlAction(this.fg.value.url));
   }
 
 

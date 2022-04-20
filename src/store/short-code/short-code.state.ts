@@ -1,6 +1,7 @@
 import { State, Action, Selector, StateContext } from '@ngxs/store';
 import {
   GetShortCodeAction,
+  GetUrlAction,
   ListShortCodeAction,
   SetShortCodeAction,
 } from './short-code.actions';
@@ -72,9 +73,25 @@ export class ShortCodeState {
   }
 
   @Action(GetShortCodeAction)
-  public get({ setState, patchState, dispatch }: StateContext<ShortCodeStateModel>, {payload}: GetShortCodeAction) {
+  public getShortCode({ setState, patchState, dispatch }: StateContext<ShortCodeStateModel>, {payload}: GetShortCodeAction) {
     //patchState(ShortCodeState.setInstanceState(payload));
-    return this._apiService.geShortCode(payload).pipe(
+    return this._apiService.getShortCode(payload).pipe(
+      tap(( data ) => {
+        console.log(data);
+      }),
+      catchError(err => {
+        console.log('shortcode error', err.toString());
+        return of(err);
+      })
+    );
+  }
+
+
+
+  @Action(GetUrlAction)
+  public getUrl({ setState, patchState, dispatch }: StateContext<ShortCodeStateModel>, {payload}: GetUrlAction) {
+    //patchState(ShortCodeState.setInstanceState(payload));
+    return this._apiService.getUrl(payload).pipe(
       tap(( data ) => {
         console.log(data);
       }),

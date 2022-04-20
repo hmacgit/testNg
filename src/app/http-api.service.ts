@@ -11,7 +11,7 @@ import {ShortCodeStateModel} from '../store/short-code/short-code.state';
 const baseUrl = "https://procom-interview-api.herokuapp.com/api/v1";
 const postUrl = `${baseUrl}/shortCode`;
 const listUrl = `${baseUrl}/url`;
-//const getUrl = `${baseUrl}/url`;
+const getUrl = `${baseUrl}/shortCode`;
 
 @Injectable({
   providedIn: 'root'
@@ -28,8 +28,14 @@ export class HttpApiService {
     return this._http.get(listUrl);
   }
 
-  geShortCode(shortCode: string) {
+  getShortCode(shortCode: string) {
     return this._http.get(`${listUrl}/${shortCode}`);
+  }
+
+  getUrl(url: string) {
+    const encodeURI = encodeURIComponent(url);
+    console.log(encodeURI);
+    return this._http.get(`${getUrl}/${encodeURI}`);
   }
 
 }
