@@ -16,9 +16,15 @@ import produce from 'immer';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {ShortUrlComponent} from '../../app/short-url/short-url.component';
 
+export interface ShortCodeUrl {
+  url?: string,
+  shortCode: string
+}
+
 export interface ShortCodeStateModel {
   url?: string,
   shortCode: string
+  items?: ShortCodeUrl[]
 }
 
 @State<ShortCodeStateModel>({
@@ -26,6 +32,7 @@ export interface ShortCodeStateModel {
   defaults: {
     url: '',
     shortCode: '',
+    items: []
   }
 })
 
@@ -42,6 +49,12 @@ export class ShortCodeState {
   @Selector()
   public static getState(state: ShortCodeStateModel) {
     return state;
+  }
+
+
+  @Selector()
+  public static getItems(state: ShortCodeStateModel) {
+    return state.items;
   }
 
 
@@ -69,7 +82,13 @@ export class ShortCodeState {
     return this._apiService.listShortCode().pipe(
       tap(( data ) => {
         console.log(data);
+        setState(
+          produce((draft: ShortCodeStateModel) => {
+            draft.items = data;
+          })
+        );
       }),
+
       catchError(err => {
         console.log(err.statusText, err.status);
         this._snackBar.open(err.statusText, err.status);

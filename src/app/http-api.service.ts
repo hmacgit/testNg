@@ -5,7 +5,10 @@ import {
 } from "@angular/common/http";
 import {shortCode} from "./httpApi.interface";
 import {FormBuilder, FormControl} from "@angular/forms";
-import {ShortCodeStateModel} from '../store/short-code/short-code.state';
+import {
+  ShortCodeStateModel,
+  ShortCodeUrl
+} from '../store/short-code/short-code.state';
 
 
 const baseUrl = "https://procom-interview-api.herokuapp.com/api/v1";
@@ -25,7 +28,7 @@ export class HttpApiService {
   }
 
   listShortCode() {
-    return this._http.get(listUrl);
+    return this._http.get<ShortCodeUrl[]>(listUrl);
   }
 
   getShortCode(shortCode: string) {
