@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ShortUrlComponent } from './short-url/short-url.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from '@angular/common/http';
+import {NgxsStoreModule} from '../store/store.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {HttpClientModule} from '@angular/common/http';
         BrowserModule,
         AppRoutingModule,
         ReactiveFormsModule,
-        HttpClientModule
+        HttpClientModule,
+        NgxsStoreModule
     ],
   providers: [],
   bootstrap: [AppComponent]
