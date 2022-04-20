@@ -66,7 +66,7 @@ export class ShortCodeState {
         console.log(data);
       }),
       catchError(err => {
-        console.log('shortcode error', err.toString());
+        console.log(err.statusText, err.status);
         return of(err);
       })
     );
@@ -80,7 +80,7 @@ export class ShortCodeState {
         console.log(data);
       }),
       catchError(err => {
-        console.log('shortcode error', err.toString());
+        console.log(err.statusText, err.status);
         return of(err);
       })
     );
@@ -96,7 +96,7 @@ export class ShortCodeState {
         console.log(data);
       }),
       catchError(err => {
-        console.log('shortcode error', err.toString());
+        console.log(err.statusText, err.status);
         return of(err);
       })
     );
