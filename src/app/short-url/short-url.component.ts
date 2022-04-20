@@ -24,8 +24,7 @@ export class ShortUrlComponent implements OnInit {
 
   submit() {
     if(this.fg.valid) {
-
-      //this.api.postShortCode(this.fg)
+      this.api.postShortCode(this.fg.value)
     }
 
   }

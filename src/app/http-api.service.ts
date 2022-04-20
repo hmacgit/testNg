@@ -4,18 +4,18 @@ import {shortCode} from "./httpApi.interface";
 import {FormBuilder, FormControl} from "@angular/forms";
 
 
-const postUrl = "https://procom-interview-api.herokuapp.com/api/v1/docs/#/default/post_shortCode";
+const baseUrl = "https://procom-interview-api.herokuapp.com/api/v1";
+const postUrl = `${baseUrl}/shortCode`;
+
 @Injectable({
   providedIn: 'root'
 })
 export class HttpApiService {
 
-
   constructor(private _http: HttpClient) { }
 
-  postShortCode(fg: FormControl) {
-    //fg
-    //return this._http.post(postUrl, )
+  postShortCode(fg: shortCode) {
+    return this._http.post(postUrl,fg);
   }
 
 }
