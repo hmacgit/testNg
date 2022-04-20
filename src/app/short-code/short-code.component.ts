@@ -31,7 +31,7 @@ export class ShortCodeComponent implements OnInit {
   controlConstant = shortURLConstant.controls;
 
   ngOnInit(): void {
-    this.fg = this.fs.shortURL();
+    this.fg = this.fs.getCode();
   }
 
   post() {
@@ -48,7 +48,13 @@ export class ShortCodeComponent implements OnInit {
 
   getShortCode() {
     console.log(this.fg.value.shortCode);
-    this._store.dispatch(new GetShortCodeAction(this.fg.value.shortCode));
+
+    if(this.fg.valid) {
+      this._store.dispatch(new GetShortCodeAction(this.fg.value.shortCode));
+    } else {
+      this.fg.markAllAsTouched();
+    }
+
   }
 
   getUrl() {

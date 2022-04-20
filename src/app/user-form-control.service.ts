@@ -9,13 +9,37 @@ export class UserFormControlService {
 
   constructor(private _fb: FormBuilder) { }
 
-  shortURL() {
+  getURL() {
+   return this._fb.group( {
+     [shortURLConstant.controls.url]: null,
+     [shortURLConstant.controls.shortCode] : [
+      '',
+      Validators.required
+     ]
+    });
+  }
+
+  getCode() {
    return this._fb.group( {
      [shortURLConstant.controls.url]: [
        '',
        Validators.required
      ],
       [shortURLConstant.controls.shortCode] : null,
+    });
+
+  }
+
+  postShortCode() {
+   return this._fb.group( {
+     [shortURLConstant.controls.url]: [
+       '',
+       Validators.required
+     ],
+      [shortURLConstant.controls.shortCode] : [
+        '',
+        Validators.required
+      ],
     });
 
   }

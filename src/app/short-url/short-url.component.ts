@@ -28,7 +28,7 @@ export class ShortUrlComponent implements OnInit {
   controlConstant = shortURLConstant.controls;
 
   ngOnInit(): void {
-    this.fg = this.fs.shortURL();
+    this.fg = this.fs.getURL();
   }
 
   post() {
@@ -50,7 +50,13 @@ export class ShortUrlComponent implements OnInit {
 
   getUrl() {
     console.log(this.fg.value.url);
-    this._store.dispatch(new GetUrlAction(this.fg.value.url));
+
+    if(this.fg.valid) {
+      this._store.dispatch(new GetUrlAction(this.fg.value.url));
+    } else {
+      this.fg.markAllAsTouched();
+    }
+
   }
 
 

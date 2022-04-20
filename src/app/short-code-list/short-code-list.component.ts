@@ -32,7 +32,7 @@ export class ShortCodeListComponent implements OnInit {
   controlConstant = shortURLConstant.controls;
 
   ngOnInit(): void {
-    this.fg = this.fs.shortURL();
+    this.fg = this.fs.postShortCode();
   }
 
   post() {
