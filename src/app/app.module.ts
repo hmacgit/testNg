@@ -13,6 +13,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ShortCodeListComponent } from './short-code-list/short-code-list.component';
 import { ShortCodeComponent } from './short-code/short-code.component';
+import {MatCardModule} from '@angular/material/card';
+import {CommonModule} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -21,17 +23,19 @@ import { ShortCodeComponent } from './short-code/short-code.component';
     ShortCodeListComponent,
     ShortCodeComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        NgxsStoreModule,
-        BrowserAnimationsModule,
-        NgbModule,
-        MatButtonModule,
-        MatSnackBarModule
-    ],
+  imports: [
+    CommonModule,
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgxsStoreModule,
+    BrowserAnimationsModule,
+    NgbModule,
+    MatButtonModule,
+    MatSnackBarModule,
+    MatCardModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

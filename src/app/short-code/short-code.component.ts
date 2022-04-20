@@ -16,7 +16,10 @@ import {
   ListShortCodeAction,
   SetShortCodeAction
 } from '../../store/short-code/short-code.actions';
-import {ShortCodeState} from '../../store/short-code/short-code.state';
+import {
+  ShortCodeState,
+  ShortCodeUrl
+} from '../../store/short-code/short-code.state';
 
 @Component({
   selector: 'app-short-code',
@@ -33,6 +36,7 @@ export class ShortCodeComponent implements OnInit {
   ) { }
   fg: FormGroup;
   controlConstant = shortURLConstant.controls;
+
   @Select(ShortCodeState.getItems) getItems$: any;
 
   ngOnInit(): void {

@@ -40,6 +40,15 @@
 
   <div class="card m-2">
     <h5 class="m-2">list</h5>
+    <div *ngIf="(getItems$ | async)">
+      <mat-card-content>
+        {{getItems$}}
+<!--
+        <li *ngFor="let item of getItems$">
+          {{item.url}}
+        </li>-->
+      </mat-card-content>
+    </div>
 
 
   </div>

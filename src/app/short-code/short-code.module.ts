@@ -4,10 +4,7 @@ import {
   RouterModule,
   Routes
 } from '@angular/router';
-import {ShortUrlComponent} from '../short-url/short-url.component';
 import {ShortCodeComponent} from './short-code.component';
-
-
 
 const routes: Routes = [
   {
@@ -19,7 +16,10 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [],
-  imports: [RouterModule.forChild(routes)],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes)
+  ],
   exports: [RouterModule]
 })
 export class ShortCodeModule { }

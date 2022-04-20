@@ -29,6 +29,7 @@ export class HttpApiService {
 
   listShortCode() {
     return this._http.get<ShortCodeUrl[]>(listUrl);
+    //this.http.get(url).map(res => res.json());
   }
 
   getShortCode(shortCode: string) {
