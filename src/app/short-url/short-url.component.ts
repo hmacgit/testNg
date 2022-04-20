@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {shortURLConstant} from "../formConstants";
 import {UserFormControlService} from "../user-form-control.service";
 import {HttpApiService} from "../http-api.service";
+import {Store} from '@ngxs/store';
 
 @Component({
   selector: 'app-short-url',
@@ -11,10 +12,12 @@ import {HttpApiService} from "../http-api.service";
 })
 export class ShortUrlComponent implements OnInit {
 
-  constructor(private _fb: FormBuilder,
-              private fs: UserFormControlService,
-              private api: HttpApiService,
-              ) { }
+  constructor(
+    private _fb: FormBuilder,
+    private fs: UserFormControlService,
+    private api: HttpApiService,
+    private _store: Store
+  ) { }
   fg: FormGroup;
   controlConstant = shortURLConstant.controls;
 
@@ -24,7 +27,9 @@ export class ShortUrlComponent implements OnInit {
 
   submit() {
     if(this.fg.valid) {
-      this.api.postShortCode(this.fg.value)
+
+    } else {
+      this.fg.markAllAsTouched();
     }
 
   }
