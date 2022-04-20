@@ -43,7 +43,7 @@ export class HttpApiService {
 
     const encodeURI = encodeURIComponent(url);
     console.log(encodeURI);
-    return this._http.get(`${getUrl}/${encodeURI}`);
+    return this._http.get<ShortCodeUrl>(`${getUrl}/${encodeURI}`);
 
   }
 

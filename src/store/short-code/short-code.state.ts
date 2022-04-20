@@ -78,6 +78,7 @@ export class ShortCodeState {
     return this._apiService.postShortCode(payload).pipe(
       tap(( code ) => {
         console.log(code);
+
       }),
       catchError(err => {
         console.log('shortcode error', err.toString());
@@ -113,6 +114,13 @@ export class ShortCodeState {
     return this._apiService.sendUrl(payload).pipe(
       tap(( data ) => {
         console.log(data);
+
+        setState(
+          produce((draft: ShortCodeStateModel) => {
+            draft = data;
+          })
+        );
+
       }),
       catchError(err => {
         console.log(err.statusText, err.status);
