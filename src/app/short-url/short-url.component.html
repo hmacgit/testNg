@@ -1,32 +1,40 @@
 <form
-  [formGroup]="fg"
->
-<label>{{controlConstant.url}}</label>
-<input type="text"
-       [formControlName]="controlConstant.url">
+  [formGroup]="fg">
+  <div class="card m-2">
+    <h5 class="m-2">Short Code Post</h5>
 
+    <div class="formgrid grid m-2">
+      <div class="field col">
+        <label>{{controlConstant.url}}</label>
+        <input type="text"
+               [formControlName]="controlConstant.url"
+               class="inputfield w-full">
 
-<label>{{controlConstant.shortCode}}</label>
-<input type="text"
-       [formControlName]="controlConstant.shortCode">
+        <label>{{controlConstant.shortCode}}</label>
+        <input type="text"
+               [formControlName]="controlConstant.shortCode">
+      </div>
+    </div>
 
-<div>
-  <button mat-raised-button color="primary" (click)="post()">
-    post
-  </button>
+    <div>
+      <button mat-raised-button color="primary" (click)="post()">
+        post
+      </button>
 
-  <button mat-stroked-button color="primary" (click)="List()">
-    List
-  </button>
+      <button mat-stroked-button color="primary" (click)="List()">
+        List
+      </button>
 
-  <button mat-stroked-button color="primary" (click)="getShortCode()">
-    Get Short Code
-  </button>
+      <button mat-stroked-button color="primary" (click)="getShortCode()">
+        Get Short Code
+      </button>
 
-  <button mat-stroked-button color="primary" (click)="getUrl()">
-    Get Url
-  </button>
+      <button mat-stroked-button color="primary" (click)="getUrl()">
+        Get Url
+      </button>
 
-</div>
+    </div>
+
+  </div>
 
 </form>
