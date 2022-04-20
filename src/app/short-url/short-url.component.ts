@@ -4,6 +4,10 @@ import {shortURLConstant} from "../formConstants";
 import {UserFormControlService} from "../user-form-control.service";
 import {HttpApiService} from "../http-api.service";
 import {Store} from '@ngxs/store';
+import {
+  ListShortCodeAction,
+  SetShortCodeAction
+} from '../../store/short-code/short-code.actions';
 
 @Component({
   selector: 'app-short-url',
@@ -25,13 +29,16 @@ export class ShortUrlComponent implements OnInit {
     this.fg = this.fs.shortURL();
   }
 
-  submit() {
+  post() {
     if(this.fg.valid) {
-
+      this._store.dispatch(new SetShortCodeAction(this.fg.value));
     } else {
       this.fg.markAllAsTouched();
     }
+  }
 
+  List() {
+      this._store.dispatch(new ListShortCodeAction());
   }
 
 
