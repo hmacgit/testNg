@@ -31,6 +31,10 @@ export class ShortUrlComponent implements OnInit {
     this.fg = this.fs.getURL();
   }
 
+  get shortCodeFormControl() {
+    return this.fg.controls;
+  }
+
   post() {
     if(this.fg.valid) {
       this._store.dispatch(new SetShortCodeAction(this.fg.value));

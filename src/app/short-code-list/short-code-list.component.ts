@@ -35,6 +35,12 @@ export class ShortCodeListComponent implements OnInit {
     this.fg = this.fs.postShortCode();
   }
 
+
+  get shortCodeFormControl() {
+    return this.fg.controls;
+  }
+
+
   post() {
     if(this.fg.valid) {
       this._store.dispatch(new SetShortCodeAction(this.fg.value));

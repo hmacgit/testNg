@@ -1,7 +1,7 @@
 <form
   [formGroup]="fg">
   <div class="card m-2">
-    <h5 class="m-2">Short Code Post</h5>
+    <h5 class="m-2">URL</h5>
 
     <div class="formgrid grid m-2">
       <div class="field col">
@@ -9,11 +9,22 @@
         <input type="text"
                [formControlName]="controlConstant.url"
                class="inputfield w-full">
-
+      </div>
+      <div class="field col">
         <label>{{controlConstant.shortCode}}</label>
         <input type="text"
                [formControlName]="controlConstant.shortCode">
+
+        <span class="text-danger"
+              *ngIf="(shortCodeFormControl['shortCode'].touched) &&
+               shortCodeFormControl['shortCode'].errors?.['required']">
+            Please Short Code
+        </span>
+
       </div>
+
+
+
     </div>
 
      <div class="p-grid p-fluid my-1 d-flex ml-4">

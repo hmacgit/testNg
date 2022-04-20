@@ -10,9 +10,25 @@
                [formControlName]="controlConstant.url"
                class="inputfield w-full">
 
+        <span class="text-danger"
+              *ngIf="(shortCodeFormControl['url'].touched) &&
+               shortCodeFormControl['url'].errors?.['required']">
+            Please Url Code
+        </span>
+
+      </div>
+        <div class="field col">
         <label>{{controlConstant.shortCode}}</label>
         <input type="text"
                [formControlName]="controlConstant.shortCode">
+
+
+        <span class="text-danger"
+              *ngIf="(shortCodeFormControl['shortCode'].touched) &&
+               shortCodeFormControl['shortCode'].errors?.['required']">
+            Please Short Code
+        </span>
+
       </div>
     </div>
 
