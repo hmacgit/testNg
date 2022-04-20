@@ -5,6 +5,7 @@ import {UserFormControlService} from "../user-form-control.service";
 import {HttpApiService} from "../http-api.service";
 import {Store} from '@ngxs/store';
 import {
+  GetShortCodeAction,
   ListShortCodeAction,
   SetShortCodeAction
 } from '../../store/short-code/short-code.actions';
@@ -39,6 +40,11 @@ export class ShortUrlComponent implements OnInit {
 
   List() {
       this._store.dispatch(new ListShortCodeAction());
+  }
+
+  getShortCode() {
+    console.log(this.fg.value.shortCode);
+    this._store.dispatch(new GetShortCodeAction(this.fg.value.shortCode));
   }
 
 

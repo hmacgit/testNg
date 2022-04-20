@@ -1,5 +1,6 @@
 import { State, Action, Selector, StateContext } from '@ngxs/store';
 import {
+  GetShortCodeAction,
   ListShortCodeAction,
   SetShortCodeAction,
 } from './short-code.actions';
@@ -13,9 +14,8 @@ import {HttpApiService} from '../../app/http-api.service';
 import produce from 'immer';
 
 export interface ShortCodeStateModel {
-  url: string,
+  url?: string,
   shortCode: string
-
 }
 
 @State<ShortCodeStateModel>({
@@ -61,6 +61,20 @@ export class ShortCodeState {
   public list({ setState, patchState, dispatch }: StateContext<ShortCodeStateModel>, {}: ListShortCodeAction) {
     //patchState(ShortCodeState.setInstanceState(payload));
     return this._apiService.listShortCode().pipe(
+      tap(( data ) => {
+        console.log(data);
+      }),
+      catchError(err => {
+        console.log('shortcode error', err.toString());
+        return of(err);
+      })
+    );
+  }
+
+  @Action(GetShortCodeAction)
+  public get({ setState, patchState, dispatch }: StateContext<ShortCodeStateModel>, {payload}: GetShortCodeAction) {
+    //patchState(ShortCodeState.setInstanceState(payload));
+    return this._apiService.geShortCode(payload).pipe(
       tap(( data ) => {
         console.log(data);
       }),
