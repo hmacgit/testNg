@@ -15,12 +15,11 @@ import {
 } from '../../store/short-code/short-code.actions';
 
 @Component({
-  selector: 'app-short-code-list',
-  templateUrl: './short-code-list.component.html',
-  styleUrls: ['./short-code-list.component.scss']
+  selector: 'app-short-code',
+  templateUrl: './short-code.component.html',
+  styleUrls: ['./short-code.component.scss']
 })
-export class ShortCodeListComponent implements OnInit {
-
+export class ShortCodeComponent implements OnInit {
 
   constructor(
     private _fb: FormBuilder,
@@ -56,5 +55,8 @@ export class ShortCodeListComponent implements OnInit {
     console.log(this.fg.value.url);
     this._store.dispatch(new GetUrlAction(this.fg.value.url));
   }
+
+
+
 
 }

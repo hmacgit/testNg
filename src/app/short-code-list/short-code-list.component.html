@@ -1,1 +1,38 @@
-<p>short-code-list works!</p>
+<form
+  [formGroup]="fg">
+  <div class="card m-2">
+    <h5 class="m-2">Short Code</h5>
+
+    <div class="formgrid grid m-2">
+      <div class="field col">
+        <label>{{controlConstant.url}}</label>
+        <input type="text"
+               [formControlName]="controlConstant.url"
+               class="inputfield w-full">
+
+        <label>{{controlConstant.shortCode}}</label>
+        <input type="text"
+               [formControlName]="controlConstant.shortCode">
+      </div>
+    </div>
+
+    <div>
+
+      <button mat-raised-button color="primary" (click)="post()">
+        post
+      </button>
+
+      <button
+        mat-raised-button color="primary"
+        class="ml-2"
+        (click)="List()">
+        List
+      </button>
+
+
+
+    </div>
+
+  </div>
+
+</form>
