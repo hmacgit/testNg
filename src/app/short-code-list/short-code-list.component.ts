@@ -5,7 +5,7 @@ import {
 } from '@angular/forms';
 import {UserFormControlService} from '../user-form-control.service';
 import {HttpApiService} from '../http-api.service';
-import {Store} from '@ngxs/store';
+import {Select, Store} from '@ngxs/store';
 import {shortURLConstant} from '../formConstants';
 import {
   GetShortCodeAction,
@@ -13,6 +13,7 @@ import {
   ListShortCodeAction,
   SetShortCodeAction
 } from '../../store/short-code/short-code.actions';
+import {ShortCodeState} from "../../store/short-code/short-code.state";
 
 @Component({
   selector: 'app-short-code-list',
@@ -20,6 +21,7 @@ import {
   styleUrls: ['./short-code-list.component.scss']
 })
 export class ShortCodeListComponent implements OnInit {
+  @Select(ShortCodeState.getItems) getItems$: any;
 
 
   constructor(
@@ -54,13 +56,13 @@ export class ShortCodeListComponent implements OnInit {
   }
 
   getShortCode() {
-    console.log(this.fg.value.shortCode);
-    this._store.dispatch(new GetShortCodeAction(this.fg.value.shortCode));
+    console.log(this.fg.value.url);
+    this._store.dispatch(new GetShortCodeAction(this.fg.value.url));
   }
 
   getUrl() {
-    console.log(this.fg.value.url);
-    this._store.dispatch(new GetUrlAction(this.fg.value.url));
+    console.log(this.fg.value.shortCode);
+    this._store.dispatch(new GetUrlAction(this.fg.value.shortCode));
   }
 
 }

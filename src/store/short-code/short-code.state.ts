@@ -57,6 +57,16 @@ export class ShortCodeState {
     return state.items;
   }
 
+  @Selector()
+  public static getShortCode(state: ShortCodeStateModel) {
+    return state.shortCode;
+  }
+
+  @Selector()
+  public static getUrl(state: ShortCodeStateModel) {
+    return state.url;
+  }
+
 
   private static setInstanceState(state: ShortCodeStateModel): ShortCodeStateModel {
     return { ...state };
@@ -99,7 +109,8 @@ export class ShortCodeState {
 
   @Action(GetShortCodeAction)
   public getShortCode({ setState, patchState, dispatch }: StateContext<ShortCodeStateModel>, {payload}: GetShortCodeAction) {
-    return this._apiService.getShortCode(payload).pipe(
+    console.log(payload);
+    return this._apiService.sendUrl(payload).pipe(
       tap(( data ) => {
         console.log(data);
       }),
@@ -117,7 +128,7 @@ export class ShortCodeState {
 
   @Action(GetUrlAction)
   public getUrl({ setState, patchState, dispatch }: StateContext<ShortCodeStateModel>, {payload}: GetUrlAction) {
-    return this._apiService.getUrl(payload).pipe(
+    return this._apiService.sendShortCode(payload).pipe(
       tap(( data ) => {
         console.log(data);
       }),

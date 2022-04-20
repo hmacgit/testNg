@@ -32,14 +32,19 @@ export class HttpApiService {
     //this.http.get(url).map(res => res.json());
   }
 
-  getShortCode(shortCode: string) {
+  sendShortCode(shortCode: string) {
+
+    console.log(shortCode);
     return this._http.get(`${listUrl}/${shortCode}`);
+
   }
 
-  getUrl(url: string) {
+  sendUrl(url: string) {
+
     const encodeURI = encodeURIComponent(url);
     console.log(encodeURI);
     return this._http.get(`${getUrl}/${encodeURI}`);
+
   }
 
 }

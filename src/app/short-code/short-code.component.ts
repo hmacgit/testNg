@@ -60,10 +60,10 @@ export class ShortCodeComponent implements OnInit {
   }
 
   getShortCode() {
-    console.log(this.fg.value.shortCode);
+    console.log(this.fg.value.url);
 
     if(this.fg.valid) {
-      this._store.dispatch(new GetShortCodeAction(this.fg.value.shortCode));
+      this._store.dispatch(new GetShortCodeAction(this.fg.value.url));
     } else {
       this.fg.markAllAsTouched();
     }
@@ -71,8 +71,8 @@ export class ShortCodeComponent implements OnInit {
   }
 
   getUrl() {
-    console.log(this.fg.value.url);
-    this._store.dispatch(new GetUrlAction(this.fg.value.url));
+    console.log(this.fg.value.shortCode);
+    this._store.dispatch(new GetUrlAction(this.fg.value.shortCode));
   }
 
 
