@@ -1,0 +1,18 @@
+<form
+  [formGroup]="fg"
+>
+<label>{{controlConstant.url}}</label>
+<input type="text"
+       [formControlName]="controlConstant.url">
+
+
+<label>{{controlConstant.shortCode}}</label>
+<input type="text"
+       [formControlName]="controlConstant.shortCode">
+
+
+  <button (click)="submit()">
+    submit
+
+  </button>
+</form>
